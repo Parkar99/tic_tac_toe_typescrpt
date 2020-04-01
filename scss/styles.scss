@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+$border-color: #5eb8ff;
+
+@each $i in (right, left, top, bottom) {
+  .#{$i} {
+    border-#{$i}: 2px solid $border-color;
+  }
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(9, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-areas:
+    "header"
+    "main"
+    "main"
+    "main"
+    "main"
+    "main"
+    "main"
+    "main"
+    "button";
+
+  header {
+    background-color: #0048a7;
+    grid-area: header;
+
+    h1 {
+      margin: 0;
+      min-height: 100%;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5em;
+      font-weight: bold;
+    }
+  }
+
+  main {
+    padding: 70px 10px;
+    margin: 0;
+    background-color: #4f83cc;
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+      height: 300px;
+      width: 300px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      .box {
+        position: relative;
+        height: calc(300px / 3);
+        width: calc(300px / 3);
+
+        svg {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      @for $i from 1 through 9 {
+        #box#{$i} {
+          svg {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  a {
+    background-color: #002d75;
+    color: white;
+    text-decoration: none;
+    grid-area: button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+}
