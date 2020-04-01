@@ -35,11 +35,8 @@ ids.forEach((id, index) => {
         const display = board.getBoxStatus(index);
         if (display === Display.None) {
             board.setBoxStatus(index, turn.player);
-            if (board.winner === 1) {
-                title.textContent = `${turn.name} Wins`;
-            }
-            else if (board.winner === 2) {
-                title.textContent = `${turn.name} Wins`;
+            if (board.winner === 1 || board.winner === 2) {
+                title.textContent = `${turn.name} Wins!`;
             }
             else if (board.winner === 3) {
                 title.textContent = `DRAW`;
